@@ -14,7 +14,7 @@ export const getEntities = () => (dispatch, getState) => {
             if (entities[id]) {
                 return
             } else {
-                entities[id] = axios.get(`/api/v1/products?ids[]=${id}`);
+                entities[id] = axios.get(`/api/v2/products?ids[]=${id}`);
             }
         })
        

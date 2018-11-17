@@ -40,7 +40,7 @@ class UserScene extends React.Component {
             location.state.modal &&
             this.previousLocation !== location
         );
-    
+
     return (
         <div>
             <Link to={routes.about}>

@@ -65,17 +65,17 @@ const CartScene = ({
                     {totalPrice} UAH
                 </b>
             </span>
-            <button className='buy-button'>
-                Pay...
-            </button>
+            
             <button
                 className='add-edit-delete-button delete'
                 onClick={() => onRemoveAllClick()}
             >
                 Remove all from cart
             </button>
-            <p />
         </div>
+        <button className='buy-button'>
+            Pay...
+        </button>
     </div>
 )}
 

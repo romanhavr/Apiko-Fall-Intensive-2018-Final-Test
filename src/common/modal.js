@@ -35,10 +35,16 @@ function Modal({
             border: "2px solid #444"
           }}
         >
+        <div
+          type="button"
+          className='close-button'
+          onClick={back}
+        >
+          <b>
+            &times;
+          </b>
+        </div>
           {children}
-          <button type="button" onClick={back}>
-            Close
-          </button>
         </div>
       </div>
     );

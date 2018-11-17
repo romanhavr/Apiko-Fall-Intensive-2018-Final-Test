@@ -78,6 +78,7 @@
   float: right;
   width: 80px;
   height: 22px;
+  margin-top: 20px;
   background-color: rgba(148, 199, 46, 0.5);
   border-color: rgba(137, 182, 46, 0.5)
 }
@@ -95,7 +96,7 @@
 
 .delete {
   background-color: rgba(255, 68, 0, 0.5);
-  border-color: rgba(230, 61, 0, 0.5)
+  border-color: rgba(230, 61, 0, 0.5);
 }
 
 .add {
@@ -133,4 +134,11 @@
 
 .price {
   color: rgb(28, 88, 0);
+}
+
+.close-button {
+  display: flex;
+  float: right;
+  font-size: 2em;
+  cursor: pointer;
 }
