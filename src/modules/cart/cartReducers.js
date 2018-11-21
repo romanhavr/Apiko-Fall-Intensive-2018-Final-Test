@@ -7,14 +7,19 @@ const initialState = {
 
 export default handleActions(
     {
-        [constants.ADD]: (state, action) => ({
+        [constants.ADD]: (state, action) => {
+            const items = state.items;
+            return ({
+                ...state,
+                items: items.concat(action.payload.id),
+        })},
+        [constants.REMOVE]: (state, action) =>{
+            const items = state.items;
+            items.splice(items.lastIndexOf(action.payload), 1)
+            return ({
             ...state,
-            items: [action.payload.id].concat(state.items),
-        }),
-        [constants.REMOVE]: (state, action) => ({
-            ...state,
-            items: state.items.filter(i => i !== action.payload)
-        }),
+            items: items
+        })},
         [constants.REMOVE_ALL]: (state) => ({
             ...state,
             items: [],

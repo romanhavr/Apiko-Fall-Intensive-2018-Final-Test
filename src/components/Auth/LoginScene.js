@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import FormInput from './FormInput';
@@ -45,6 +45,9 @@ function LoginScene({
     
     return (
     <div>
+        <legend>
+            Fill next fields to login:
+        </legend>
         <Form
             onSubmit = {onSubmit}
             validate = {validate}
@@ -52,12 +55,20 @@ function LoginScene({
                 <React.Fragment>
                     <Field name = "email">
                         {({ input, meta }) => (
-                            <FormInput {...input} meta = {meta} />
+                            <FormInput
+                                {...input}
+                                meta = {meta}
+                                placeholder = 'email'    
+                            />
                         )}
                     </Field>
                     <Field name = 'password'>
                         {({ input, meta }) => (
-                            <FormInput {...input} meta = {meta} />
+                            <FormInput
+                                {...input}
+                                meta = {meta}
+                                placeholder = 'password'    
+                            />
                         )}
                     </Field>
                     <button onClick = {handleSubmit}>
@@ -67,6 +78,18 @@ function LoginScene({
                 </React.Fragment>
             )}
         />
+        <p>
+            Forgot password? &ensp; 
+            <Link to={routes.restore} >
+                Restore it.
+            </Link>
+        </p>
+        <p>
+            Don't have account? &ensp;
+            <Link to={routes.register} >
+                Register.
+            </Link>
+        </p>
     </div>
     )
 }

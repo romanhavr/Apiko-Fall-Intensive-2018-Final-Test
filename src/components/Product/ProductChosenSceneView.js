@@ -4,10 +4,13 @@ import { withRouter } from "react-router-dom";
 const ProductChosenScene = ({
     match,
     products,
-    onCartAddClick
+    onCartAddClick,
+    isAdmin,
+    location
 }) => {
-    const id = match.params.id;
-    const product = products.find(i => i.id === id);
+    const product = products.find(i => i.id === match.params.id);
+    const cart = location.state ? location.state.cart : null;
+
     return (
         <div className='product'>
             <h4>{product.title}</h4>
@@ -22,16 +25,20 @@ const ProductChosenScene = ({
                                 />
                             </td>
                             <td valign='top'>
-                                <span><b>{product.price} UAH</b></span>
-                                <button className='buy-button'>
-                                    Buy
-                                </button>
-                                <button
+                                <span>
+                                    <b>
+                                        {product.price} UAH
+                                    </b>
+                                </span>
+                                {(!isAdmin && !cart)
+                                    ? <button
                                     className='add-edit-delete-button'
                                     onClick = {() => onCartAddClick(product)}
-                                >
-                                    Add to cart
-                                </button>
+                                    >
+                                        Add to cart
+                                    </button>
+                                    : null
+                                }
                                 <div>
                                     <p>Description:</p>
                                     {product.description}

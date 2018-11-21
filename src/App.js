@@ -4,17 +4,19 @@ import { withRouter } from "react-router-dom";
 import './App.css';
 import { routes } from './common/routes';
 import * as Api from './api/api';
-import Header from './common/header';
-import Footer from './common/footer';
-import UserScene from './components/User/UserScene';
-import AdminScene from './components/Admin/AdminScene';
-import AuthScene from './components/Auth/AuthScene';
+import Header from './components/Header/HeaderContainer';
+import Footer from './common/FooterView';
+import UserScene from './components/User/UserSceneContainer';
+import AdminScene from './components/Admin/AdminSceneContainer';
+import LoginScene from './components/Auth/LoginScene';
+import RegisterScene from './components/Auth/RegisterScene';
+import RestoreView from './common/RestoreView';
 
 function ProtectedRoute(props) {
   if (!Api.isAuthenticated()) {
     return (
       <Redirect to = {{
-          pathname: `${routes.auth}`,
+          pathname: `${routes.login}`,
           state: { modal: true }
         }}
       />
@@ -29,14 +31,13 @@ const App = () => (
     <div>
       <Header />
       <div className='App'>
-        <Link to={routes.home}>
-          Home - 
-        </Link>
         <Link to={routes.admin}>
-          - Admin
+          Admin
         </Link>
         <Switch>
-          <Route path={routes.auth} render={() => <AuthScene /> }/>
+          <Route path={routes.login} render={() => <LoginScene /> }/>
+          <Route path={routes.restore} render={() => <RestoreView /> }/>
+          <Route path={routes.register} render={() => <RegisterScene /> }/>
           <ProtectedRoute path={routes.admin} render={props => <AdminScene {...props} /> } />
           <Route path={routes.home} render={props => <UserScene {...props} /> } />
         </Switch>

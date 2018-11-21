@@ -34,6 +34,9 @@ export const Products = {
 export const Auth = {
     login(body) {
         return axios.post('api/v2/auth/login', body);
+    },
+    register(body) {
+        return axios.post('api/v2/auth/register', body)
     }
 }
 

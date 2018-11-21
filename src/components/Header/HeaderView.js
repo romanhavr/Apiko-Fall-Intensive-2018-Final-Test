@@ -1,18 +1,20 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import { routes } from './routes';
-import { connect } from 'react-redux';
-import * as appActions from '../modules/app/appActions';
+import { routes } from '../../common/routes';
 
-const Header = ({
+const HeaderView = ({
     cartItemsCount,
     user,
     logOut,
     history
 }) => (
     <div className="header">
-        <h1>My Internet SHOP</h1>
+        <h1
+            style={{cursor: 'pointer'}}
+            onClick = {() => {history.push('/')}}
+        >
+            My Internet SHOP</h1>
         <input
             className='search'
             placeholder='Search...'
@@ -24,17 +26,25 @@ const Header = ({
                         {user.firstName} {user.lastName}
                     </b>
                     /
-                    <span onClick = {() => {
-                        logOut();
-                        history.push('/')
+                    <span 
+                        style = {{cursor: 'pointer'}}
+                        onClick = {() => {
+                            logOut();
+                            history.push('/')
                         }}
                     >
                         Log out
                     </span>
                 </span>
-                : <Link to = {routes.auth}>
-                    Log in / Register
-                </Link>
+                : <span>
+                    <Link to = {routes.login}>
+                        Log in 
+                    </Link>
+                    /
+                    <Link to = {routes.register}>   
+                        Register
+                    </Link> 
+                </span>
             }
         </span>
         <Link 
@@ -53,16 +63,4 @@ const Header = ({
     </div>
 );
 
-const mapStateToProps = state => ({
-    cartItemsCount: state.cart.items.length,
-    user: state.app.user,
-})
-
-const mapStateToDispatch = {
-    logOut: appActions.logOut,
-}
-
-export default connect(
-    mapStateToProps,
-    mapStateToDispatch    
-)(withRouter(Header));
+export default withRouter(HeaderView);

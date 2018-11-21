@@ -9,11 +9,15 @@ const ProductScene = ({
     description,
     price,
     image,
-    onCartAddClick
+    onCartAddClick,
 }) => (
     <div className='product'>
-        <Link to={`/product/${id}`}>
-            <h4>{title}</h4>
+        <Link to={{
+                pathname: `/product/${id}`,
+                state: { modal: true }
+            }}
+        >
+            <h4>{title}</h4> 
         </Link>
             <table>
                 <tbody>
@@ -27,9 +31,6 @@ const ProductScene = ({
                         </td>
                         <td valign='top'>
                             <span><b>{price} UAH</b></span>
-                            <button className='buy-button'>
-                                Buy
-                            </button>
                             <button
                                 className='add-edit-delete-button'
                                 onClick = {() => onCartAddClick(item)}

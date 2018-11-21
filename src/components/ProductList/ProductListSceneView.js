@@ -1,13 +1,13 @@
 import React from 'react';
-import ProductScene from '../Product/ProductScene';
-import AdminProductScene from '../Product/AdminProductScene';
+import ProductScene from '../Product/ProductSceneView';
+import AdminProductScene from '../Product/AdminProductSceneView';
 
 const ProductListScene = ({
     isLoading,
     isError,
+    isErrorMessage,
     isAdmin,
     products,
-    onProductTitleClick,
     onProductDeleteClick,
     onCartAddClick
 }) =>  {
@@ -15,7 +15,8 @@ const ProductListScene = ({
       return <p>Loading...</p>
 
     if (isError)
-        return <p>ERROR: {isError}</p>
+        return <p>ERROR: {isErrorMessage}</p>
+    
     return (
     <div>
         <h3>Product list</h3>    
@@ -23,8 +24,8 @@ const ProductListScene = ({
             ? products.map((p) => (
                 <AdminProductScene
                     key = {p.id}
+                    item = {p}
                     {...p}
-                    onTitleClick = {onProductTitleClick}
                     onDeleteClick = {onProductDeleteClick}
                 />)
             )
