@@ -27,31 +27,31 @@ export const initApi = () => {
 
 export const Products = {
     fetchProducts() {
-        return axios.get(`/api/v3/products`);
+        return axios.get(`/api/v2/products`);
     },
     editProduct(id, body) {
-      return axios.patch(`/api/v3/products/${id}`, body)
+      return axios.patch(`/api/v2/products/${id}`, body)
     },
     deleteProduct(id){
-      return axios.delete(`/api/v3/products/${id}`)
+      return axios.delete(`/api/v2/products/${id}`)
     },
     addProduct(body) {
-      return axios.post(`/api/v3/products`, body)
+      return axios.post(`/api/v2/products`, body)
     }
 }
 
 export const Auth = {
     login(body) {
-        return axios.post('api/v3/auth/login', body);
+        return axios.post('api/v2/auth/login', body);
     },
     register(body) {
         console.log('register - ',body)
-        return axios.post('api/v3/auth/register', body)
+        return axios.post('api/v2/auth/register', body)
     }
 }
 
 export const User = {
     getCurrent() {
-        return axios.get('/api/v3/users/current');
+        return axios.get('/api/v2/users/current');
     },
 }
