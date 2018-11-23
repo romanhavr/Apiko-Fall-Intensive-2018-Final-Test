@@ -37,7 +37,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
- 
   "devDependencies": {
     "node-http-proxy": "^0.2.3",
     "react-scripts": "^2.0.5",
