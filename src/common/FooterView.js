@@ -1,12 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
 
-const Footer = () => (
-    <Router>            
-        <div className="footer">
-            <p>My Internet SHOP</p>
-        </div>
-    </Router>
+const Footer = () => (         
+    <div className="footer">
+        <span>My Internet SHOP</span>
+        <span>
+            <b>
+                romanhavr&copy;
+            </b>
+            &emsp;
+            <i>
+                mail: romanhavr@ukr.net
+            </i>
+        </span>
+    </div>
 );
 
 export default Footer;

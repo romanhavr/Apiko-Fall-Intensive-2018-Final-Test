@@ -39,13 +39,13 @@ function RegisterScene({
     async function onSubmit(values, form) {
         try {
             const res = await Api.Auth.register(values);
-
+            console.log(res);
             form.reset();
 
             history.push(routes.login)
         } catch(err) {
             return {
-                [FORM_ERROR]: 'Wrong input data!',
+                [FORM_ERROR]: `Wrong input data!`,
             }
         }
         return null;
@@ -97,7 +97,10 @@ function RegisterScene({
                             />
                         )}
                     </Field>
-                    <button onClick = {handleSubmit}>
+                    <button
+                        onClick = {handleSubmit}
+                        className = 'add-pay-save'
+                    >
                         Register
                     </button>
                     {submitError && <div>{submitError}</div>}

@@ -12,7 +12,7 @@ const ProductChosenScene = ({
     const cart = location.state ? location.state.cart : null;
 
     return (
-        <div className='product'>
+        <div>
             <h4>{product.title}</h4>
                 <table>
                     <tbody>
@@ -32,7 +32,7 @@ const ProductChosenScene = ({
                                 </span>
                                 {(!isAdmin && !cart)
                                     ? <button
-                                    className='add-edit-delete-button'
+                                    className='add-pay-save add-edit-delete-button'
                                     onClick = {() => onCartAddClick(product)}
                                     >
                                         Add to cart
@@ -47,7 +47,6 @@ const ProductChosenScene = ({
                         </tr>
                     </tbody>
                 </table>
-            <hr />
         </div>
 );}
 

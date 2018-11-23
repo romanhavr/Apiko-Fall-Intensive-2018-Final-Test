@@ -58,7 +58,6 @@ const CartScene = ({
                 </span>
             </div>)
         )}
-        <hr />
         <div className='cart-list'>
             <button
                 className='add-edit-delete-button delete'
@@ -77,8 +76,8 @@ const CartScene = ({
                 </b>
             </span>        
         </div>
-        <button className='buy-button'>
-            Pay...
+        <button className='pay add-pay-save'>
+            &emsp;Pay...&emsp;
         </button>
     </div>
 );

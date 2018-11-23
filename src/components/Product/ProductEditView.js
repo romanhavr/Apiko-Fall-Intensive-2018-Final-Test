@@ -27,12 +27,14 @@ const ProductEdit = ({
             <input 
                 placeholder = {product.title}
                 value = {titleValue}
+                className = 'input'
                 onChange={(e) => {onTitleValueChange(e.target.value)}}
             />
             <p><b>Change image URL:</b> (current URL: "{product.image}")</p>
             <input
                 placeholder = {product.image}
                 value = {imageUrlValue}
+                className = 'input'
                 onChange={(e) => {onImageUrlValueChange(e.target.value)}}
             />
             <p><b>Change price (UAH):</b> (current price: "{product.price}")</p>
@@ -40,32 +42,25 @@ const ProductEdit = ({
                 type = 'number'
                 placeholder = {product.price}
                 value = {priceValue}
+                className = 'input'
                 onChange={(e) => {onPriceValueChange(e.target.value)}}
             />
             <p><b>Change description:</b></p> 
             <p>(current description: "{product.description}")</p>
             <textarea
-                className='description-edit'
                 placeholder = {product.description}
                 value = {descriptionValue}
+                className = 'textarea'
                 onChange={(e) => {onDescriptionValueChange(e.target.value)}}
             />
             <hr />
             <button
-                className='add-edit-delete-button'
+                className='add-edit-delete-button add-pay-save'
                 onClick = {() => onProductEditSave(productId)}
             >
-                Save
+                &emsp;Save&emsp;
             </button>
         </div>
 );}
 
 export default ProductEdit;
-
-/*
-
-
-
-
-
-*/

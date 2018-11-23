@@ -71,7 +71,10 @@ function LoginScene({
                             />
                         )}
                     </Field>
-                    <button onClick = {handleSubmit}>
+                    <button 
+                        onClick = {handleSubmit}
+                        className = 'add-pay-save'
+                    >
                         Login
                     </button>
                     {submitError && <div>{submitError}</div>}

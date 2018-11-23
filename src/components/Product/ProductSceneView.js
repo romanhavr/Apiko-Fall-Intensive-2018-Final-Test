@@ -6,7 +6,6 @@ const ProductScene = ({
     item,
     id,
     title,
-    description,
     price,
     image,
     onCartAddClick,
@@ -17,35 +16,24 @@ const ProductScene = ({
                 state: { modal: true }
             }}
         >
-            <h4>{title}</h4> 
+            <img 
+                src={image}
+                className='product-image'
+                alt={title}
+            />
+            <b>{title}</b> 
         </Link>
-            <table>
-                <tbody>
-                    <tr>
-                        <td className='table-image'>
-                            <img 
-                                src={image}
-                                className='product-image'
-                                alt={title}
-                            />
-                        </td>
-                        <td valign='top'>
-                            <span><b>{price} UAH</b></span>
-                            <button
-                                className='add-edit-delete-button'
-                                onClick = {() => onCartAddClick(item)}
-                            >
-                                Add to cart
-                            </button>
-                            <div>
-                                <p>Description:</p>
-                                {description}
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        <hr />
+        <div>
+            <b>
+                {price} UAH
+            </b>
+        </div>
+        <button
+            className='add-pay-save'
+            onClick = {() => onCartAddClick(item)}
+        >
+            Add to cart
+        </button>
     </div>
 );
 

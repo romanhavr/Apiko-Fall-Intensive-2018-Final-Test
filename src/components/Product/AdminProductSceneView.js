@@ -7,15 +7,13 @@ const AdminProductScene = ({
     title,
     onDeleteClick
 }) => (
-    <div className='product'>
+    <div className='admin-product'>
             <Link 
                 to={{
                 pathname: `/admin/product/${id}`,
                 state: { modal: true }
-            }}>    
-                <span>
-                    {title}
-                </span>
+            }}>
+                {title}
             </Link>
             <button
                 className='add-edit-delete-button delete'
@@ -34,7 +32,6 @@ const AdminProductScene = ({
                 Edit
             </button>
             </Link>
-        <hr />
     </div>
 );
 

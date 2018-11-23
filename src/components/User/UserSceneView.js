@@ -17,18 +17,6 @@ const UserSceneView = ({
     ...props
 }) => (
     <div>
-        <Link to={routes.about}>
-            - About -
-        </Link>
-        <Link to={routes.contact}>
-            - Contact -
-        </Link>
-        <Link to={routes.termsandconditions}>
-            - Terms and conditions -
-        </Link>
-        <Link to={routes.privacypolicy}>
-            - Privacy policy
-        </Link>
         <Switch location={props.isModal ? props.previousLocation : props.location}>
             <Route exact path={routes.about} component={AboutScene} />
             <Route exact path={routes.contact} component={ContactScene} />

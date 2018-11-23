@@ -2,20 +2,66 @@
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  min-width: 800px; 
+  min-height: calc(100vh - 133px);
+  min-width: 800px;
+}
+
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  padding-top: 5px;
+  padding: 0 100px;
+  min-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  background-color: olivedrab;
+}
+
+.navigation li {
+  display: inline;
+  width: 25%;
+  text-align: center;
+}
+
+.navigation li a {
+  display: block;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(40, 49, 0);
+}
+
+.navigation li a:hover {
+  background-color: rgb(133, 179, 41);
+  color: black;
 }
 
 .header {
   background-color: olivedrab;
-  height: 70px;
+  height: 50px;
   min-width: 800px;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 0 20px;
+  padding: 0 100px;
 }
 
-.header>h1 {
-  color: rgb(40, 49, 0)
+.header h1 {
+  color: rgb(40, 49, 0);
+  margin: 5px;
+}
+
+.header a {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 1.5em;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(40, 49, 0);
+}
+
+.header a:hover {
+  background-color: rgb(133, 179, 41);
+  color: black;
 }
 
 .search {
@@ -25,31 +71,60 @@
   width: 200px;
   border-radius: 10px;
   padding-left: 5px;
-  margin-top: 32px;
+  margin-top: 17px;
 }
 
 .user-login {
   float: right;
-  margin-top: 32px;
+  margin-top: 17px;
 }
 
-.cart {
-  float: right;
-  margin-top: 32px;
+.user-list {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.product {
+  width: 190px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
+  padding: 10px 0;
+  border: 1px solid rgb(133, 179, 41);
+  border-top: 0;
+  border-left: 0;
+  border-radius: 10px;
+}
+
+.admin-list {
+  padding-top: 50px;
+}
+
+.admin-product {
+  width: 75%;
+  min-width: 400px; 
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 20px;
+  border: 1px solid rgb(133, 179, 41);
+  border-top: 0;
+  border-left: 0;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
 }
 
 .table-image {
-  width: 210px;
+  vertical-align: top;
 }
 
 .product-image {
-  max-width: 200px;
+  max-width: 180px;
   max-height: 200px;
-}
-
-.admin-image {
-  max-width: 100px;
-  max-height: 100px;
 }
 
 .edit-image {
@@ -68,10 +143,9 @@
   text-align: center;
 }
 
-.chosen>img {
+.chosen img {
   max-width: 340px;
   max-height: 380px;
- 
 }
 
 .buy-button {
@@ -87,6 +161,7 @@
   float: right;
   margin-right: 10px;
   height: 22px;
+  border-radius: 10px;
 }
 
 .edit {
@@ -95,41 +170,39 @@
 }
 
 .delete {
-  background-color: rgba(255, 68, 0, 0.5);
+  background-color: rgba(255, 102, 0, 0.5);
   border-color: rgba(230, 61, 0, 0.5);
 }
 
-.add {
-  background-color: rgba(55, 212, 115, 0.5);
-  border-color: rgba(47, 177, 97, 0.5)
+.add-pay-save {
+  margin-right: 10px;
+  height: 22px;
+  border-radius: 10px;
+  background-color: rgba(106, 142, 35, 0.5);
+  border-color: rgba(74, 99, 25, 0.5)
 }
 
-.description-edit {
-  width: 70%;
-  height: 60px;
-  resize: none;
-}
-
-.menu>li {
-  text-align: center;
-  display: inline;
-  margin: 3px;
+.pay {
+  margin: 10px 0 0 85%;
 }
 
 .footer {
   background-color: olivedrab;
   color: rgb(40, 49, 0);
-  position: inherit;
-  padding-left: 20px;
-  height: 2.5em;
-  width: 100%;
+  height: 30px;
+  position: relative;
   bottom: 0;
+  padding-left: 20px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cart-list {
   width: 90%;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid olivedrab;
 }
 
 .price {
@@ -141,4 +214,19 @@
   float: right;
   font-size: 2em;
   cursor: pointer;
+}
+
+.input {
+  border-radius: 10px;
+  padding: 0 5px;
+  margin: 5px 0;
+  height: 1.5em;
+}
+
+.textarea {
+  border-radius: 10px;
+  padding: 0 5px;
+  width: 70%;
+  height: 60px;
+  resize: none;
 }

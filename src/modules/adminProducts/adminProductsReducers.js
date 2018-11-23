@@ -36,13 +36,9 @@ export default handleActions(
         [constants.EDIT_PRODUCT]: (state) => ({
             ...state,
         }),
-        [constants.ADD_PRODUCT]: (state, action) => ({
-                ...state,
-             //   products: [action.payload.id].concat(state.products),
-
-                        // Not working correctly with localStorage
-                        // because when addind a new product it adds only its ID
-                        // but not entites. It causes errors for listing methods.
+        [constants.ADD_PRODUCT_ERROR]: (state, action) => ({
+            ...state,
+            error: action.payload.messsage,
         }),
     },
     initialState,

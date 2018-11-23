@@ -23,12 +23,14 @@ const ProductAdd = ({
             <input
                 value = {titleValue}
                 placeholder = 'Product title'
+                className = 'input'
                 onChange={(e) => {onTitleValueChange(e.target.value)}}
             />
             <p><b>Enter image URL:</b></p>
             <input
                 value = {imageUrlValue}
                 placeholder = 'Product image URL'
+                className = 'input'
                 onChange={(e) => {onImageUrlValueChange(e.target.value)}}
             />
             <p><b>Enter price (UAH):</b></p>
@@ -36,21 +38,22 @@ const ProductAdd = ({
                 type = 'number'
                 value = {priceValue}
                 placeholder = 'Product price'
+                className = 'input'
                 onChange={(e) => {onPriceValueChange(e.target.value)}}
             />
             <p><b>Enter description:</b></p> 
             <textarea
-                className='description-edit'
                 value = {descriptionValue}
                 placeholder = 'Product description'
+                className = 'textarea'
                 onChange={(e) => {onDescriptionValueChange(e.target.value)}}
             />
             <hr />
             <button
-                className='add-edit-delete-button'
+                className='add-edit-delete-button add-pay-save'
                 onClick = {onProductAddSave}
             >
-                Save
+                &emsp;Save&emsp;
             </button>
         </div>
 );

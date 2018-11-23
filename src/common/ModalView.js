@@ -14,25 +14,29 @@ function Modal({
       <div
         onClick={back}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           bottom: 0,
           right: 0,
-          background: "rgba(0, 0, 0, 0.25)"
+          background: "rgba(210, 236, 158, 0.3)"
         }}
       >
         <div
           className="modal"
           onClick = {(e) => e.stopPropagation()}
           style={{
-            position: "absolute",
+            position: "fixed",
             background: "#fff",
             top: 25,
+            maxHeight: "80vh",
             left: "10%",
             right: "10%",
             padding: 15,
-            border: "2px solid #444"
+            border: "1px solid rgb(40, 49, 0)",
+            borderRadius: "10px",
+            boxShadow: "3px 3px 0 rgba(105, 121, 72, 0.7)",
+            overflow: "scroll"
           }}
         >
         <div

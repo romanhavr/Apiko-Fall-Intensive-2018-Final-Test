@@ -11,7 +11,10 @@ const FormInput = ({
             {label}
             {required && <span> *</span>}
         </label>
-        <input {...props} />
+        <input 
+            {...props} 
+            className = 'input'
+        />
         {meta.error && meta.touched && <div>{meta.error}</div> }
     </div>
 )

@@ -18,8 +18,11 @@ const ProductListScene = ({
         return <p>ERROR: {isErrorMessage}</p>
     
     return (
-    <div>
-        <h3>Product list</h3>    
+    <div className = {isAdmin 
+                        ? 'admin-list'
+                        : 'user-list'
+                    }
+    >  
         {isAdmin
             ? products.map((p) => (
                 <AdminProductScene

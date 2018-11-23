@@ -23,7 +23,8 @@ const AdminSceneView = ({
             pathname: `/admin/product/add`,
             state: { modal: true }
          }}>
-            <button className='add-edit-delete add'>
+            <p />
+            <button className='add-edit-delete-button add-pay-save'>
                 Add product
             </button> 
         </Link>
@@ -35,7 +36,7 @@ const AdminSceneView = ({
                     <ProductListScene 
                         {...props}
                         onProductTitleClick = {props.handleProductTitleClick}
-                        onProductDeleteClick = {deleteProduct}                            
+                        onProductDeleteClick = {props.handleDeleteProduct}                            
                     />}
             />
             <Route path='*' component={NotFoundScene} />

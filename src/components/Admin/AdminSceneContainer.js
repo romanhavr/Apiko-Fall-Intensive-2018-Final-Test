@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, lifecycle, withState, withHandlers, pure } from 'recompose';
+import { compose, lifecycle, withState, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import * as adminProductsOperations from '../../modules/adminProducts/adminProductsOperations';
 import * as adminProductsSelectors from '../../modules/adminProducts/adminProductsSelectors';
@@ -9,7 +9,7 @@ import AdminSceneView from './AdminSceneView';
 
 const AdminScene = (props) => (
     <AdminSceneView {...props} />
-);    
+);
 
 function handleProductEditSave(id, props) {
 
@@ -36,7 +36,8 @@ function handleProductEditSave(id, props) {
 
         props.history.push(props.previousLocation)
 
-        props.editProduct();
+        props.editProduct(id, product);
+        props.editProductInList();
         
         props.setTitleValue('');
         props.setPriceValue('');
@@ -44,7 +45,7 @@ function handleProductEditSave(id, props) {
         props.setDescriptionValue('');
     }
 
-function handleProductAddSave(props) {
+function ProductAddSave(props) {
         
         const product = {};
         product.id = uuid.v1();
@@ -78,8 +79,6 @@ function handleProductAddSave(props) {
             props.history.push(props.previousLocation);
 
             props.addProduct(product);
-
-            alert('New product - "'+product.title+'" added successfuly.')
         }
     }
 
@@ -118,9 +117,11 @@ const mapStateToProps = (state, props) => ({
 
 const mapStateToDispatch = {
     fetchProducts: adminProductsOperations.fetchProducts,
-    deleteProduct: adminProductsActions.deleteProduct,
-    editProduct: adminProductsActions.editProduct,
-    addProduct: adminProductsActions.addProduct,
+    deleteProduct: adminProductsOperations.deleteProduct,
+    deleteProductFromList: adminProductsActions.deleteProduct,
+    editProduct: adminProductsOperations.editProduct,
+    editProductInList: adminProductsActions.editProduct,
+    addProduct: adminProductsOperations.addProduct,
 };
 
 const enhance = compose(
@@ -154,7 +155,11 @@ const enhance = compose(
             handleProductEditSave(id, props)
         },
         handleProductAddSave: props => () => {
-            handleProductAddSave(props)
+            ProductAddSave(props)
+        },
+        handleDeleteProduct: props => id => {
+            props.deleteProduct(id);
+            props.deleteProductFromList(id)
         }
     }),
 );
