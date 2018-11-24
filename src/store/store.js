@@ -32,7 +32,10 @@ try {
             composeWithDevTools(applyMiddleware(reduxThunk))
             );
     } else {
-        store = createStore(rootModule);
+        store = createStore(
+            rootModule,
+            composeWithDevTools(applyMiddleware(reduxThunk))
+            );
     };
 
 export const persistor = persistStore(store);
