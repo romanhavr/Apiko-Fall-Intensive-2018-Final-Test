@@ -7,11 +7,7 @@ export const fetchProducts = () => async (dispatch, getState) => {
 
     try {
         const ids = getState().adminProducts.products;
-        const role = getState().app.user.firstName;
-        if (ids.length > 0 && role !== 'qwe') {
-            if (role !== 'qwe') {
-                return console.log('Not "QWE" user');
-            }
+        if (ids.length > 0 ) {
             return
         }
 

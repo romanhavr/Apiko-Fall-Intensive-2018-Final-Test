@@ -21,6 +21,11 @@ function handleProductEditSave(id, props) {
         }
         const product = props.products[currentProductIndex];
 
+        if (props.imageUrlValue.length >= 255 ) {
+            alert('Image URL must be NO longer than 255 symbols!');
+            return
+        };
+
         product.title = props.titleValue 
             ? props.titleValue 
             : product.title;
@@ -28,7 +33,7 @@ function handleProductEditSave(id, props) {
             ? props.priceValue 
             : product.price;
         product.image = props.imageUrlValue
-            ? props.imageUrlValue 
+            ? props.imageUrlValue
             : product.image;
         product.description = props.descriptionValue
             ? props.descriptionValue 
@@ -48,6 +53,12 @@ function handleProductEditSave(id, props) {
 function ProductAddSave(props) {
         
         const product = {};
+
+        if (props.imageUrlValue.length >= 255 ) {
+            alert('Image URL must be NO longer than 255 symbols!');
+            return
+        };
+
         product.id = uuid.v1();
         product.title = props.titleValue 
             ? props.titleValue 

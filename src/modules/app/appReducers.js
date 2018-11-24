@@ -3,7 +3,7 @@ import * as constants from './appConstants';
 import * as Api from '../../api/api';
 
 const initialState = {
-    user: [],
+    user: {},
 };
 
 export default handleActions(
@@ -16,7 +16,7 @@ export default handleActions(
             Api.removeToken();
             return ({
             ...state,
-            user: [],
+            user: {},
         })},
     },
     initialState,

@@ -27,12 +27,12 @@ const HeaderView = ({
                 placeholder='Search...'
             />
             <span className='user-login'>
-                {user.firstName
+                {(user && user.firstName)
                     ? <span>
                         <b>
                             {user.firstName} {user.lastName}
                         </b>
-                        /
+                        &ensp;/&ensp;
                         <span 
                             style = {{cursor: 'pointer'}}
                             onClick = {() => {

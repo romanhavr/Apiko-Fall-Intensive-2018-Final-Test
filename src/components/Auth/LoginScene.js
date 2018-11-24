@@ -33,8 +33,10 @@ function LoginScene({
             Api.setToken(res.data.token);
 
             form.reset();
-            store.dispatch(appOperations.init());
+            store.dispatch(appOperations.init())
+
             history.push(routes.admin)
+
         } catch(err) {
             return {
                 [FORM_ERROR]: 'Wrong email or password!',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import './App.css';
 import { routes } from './common/routes';
 import * as Api from './api/api';
@@ -12,35 +13,49 @@ import LoginScene from './components/Auth/LoginScene';
 import RegisterScene from './components/Auth/RegisterScene';
 import Restore from './components/Auth/RestoreContainer';
 
-function ProtectedRoute(props) {
-  if (!Api.isAuthenticated()) {
-    return (
-      <Redirect to = {{
-          pathname: `${routes.login}`,
-          state: { modal: true }
-        }}
-      />
-    )
-  }
-  return (
-    <Route {...props} />
+const ProtectedRoute = ({
+  user,
+  ...props
+}) => (
+    <Route
+      {...props}
+      render={props => {
+        console.log('props - ',user)
+        if (Api.isAuthenticated()) {
+          if (user.role === 'admin') 
+            return <Route {...props} />
+          else return <Redirect to={routes.home} />
+        } else {
+          return <Redirect to={routes.login} />
+        }
+      }}
+    />
   )
-}
 
-const App = () => (
+const App = ({
+  currentUser
+}) => (
     <div>
       <Header />
       <div className='App'>
         <Switch>
-          <Route path={routes.login} render={() => <LoginScene /> }/>
-          <Route path={routes.restore} render={() => <Restore /> }/>
-          <Route path={routes.register} render={() => <RegisterScene /> }/>
-          <ProtectedRoute path={routes.admin} render={props => <AdminScene {...props} /> } />
+          <Route path={routes.login} render={() => <LoginScene />} />
+          <Route path={routes.restore} render={() => <Restore />} /> 
+          <Route path={routes.register} render={() => <RegisterScene />} /> 
+          <ProtectedRoute 
+            path={routes.admin}
+            user={currentUser}
+            render={props => <AdminScene {...props} />} />
+          /> 
           <Route path={routes.home} render={props => <UserScene {...props} /> } />
         </Switch>
       </div>
       <Footer />
     </div>
-)
+);
 
-export default withRouter(App);
+const mapStateToProps = state => ({
+  currentUser: state.app.user
+});
+
+export default connect(mapStateToProps)(withRouter(App));
