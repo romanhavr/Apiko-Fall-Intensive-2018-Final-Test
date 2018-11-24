@@ -34,6 +34,7 @@ try {
     } else {
         store = createStore(
             rootModule,
+            initialState,
             composeWithDevTools(applyMiddleware(reduxThunk))
             );
     };
