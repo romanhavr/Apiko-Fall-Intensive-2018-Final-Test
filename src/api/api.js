@@ -51,6 +51,6 @@ export const Auth = {
 
 export const User = {
     getCurrent() {
-        return axios.get('/api/v3/users/current');
+        return axios.get('/api/v3/users/current',);
     },
 }

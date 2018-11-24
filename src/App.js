@@ -16,21 +16,20 @@ import Restore from './components/Auth/RestoreContainer';
 const ProtectedRoute = ({
   user,
   ...props
-}) => (
-    <Route
-      {...props}
-      render={props => {
-        console.log('props - ',user)
-        if (Api.isAuthenticated()) {
-          if (user.role === 'admin') 
-            return <Route {...props} />
-          else return <Redirect to={routes.home} />
-        } else {
-          return <Redirect to={routes.login} />
-        }
-      }}
-    />
-  )
+}) => {
+  console.log('user role - ',user.role)
+
+  if (!Api.isAuthenticated()) {
+    return <Redirect to = {routes.login} />
+  } else {
+    if (user.role === 'admin') {
+      console.log('user role - ',user.role)
+      return <Route {...props} />
+    } else {
+      return <Redirect to={routes.home} />
+    }
+  }
+};
 
 const App = ({
   currentUser
@@ -39,7 +38,7 @@ const App = ({
       <Header />
       <div className='App'>
         <Switch>
-          <Route path={routes.login} render={() => <LoginScene />} />
+          <Route path={routes.login} render={() => <LoginScene /> }/>
           <Route path={routes.restore} render={() => <Restore />} /> 
           <Route path={routes.register} render={() => <RegisterScene />} /> 
           <ProtectedRoute 
@@ -58,4 +57,4 @@ const mapStateToProps = state => ({
   currentUser: state.app.user
 });
 
-export default connect(mapStateToProps)(withRouter(App));
+export default withRouter(connect(mapStateToProps)(App));
