@@ -17,13 +17,10 @@ const ProtectedRoute = ({
   user,
   ...props
 }) => {
-  console.log('user role - ',user.role)
-
   if (!Api.isAuthenticated()) {
     return <Redirect to = {routes.login} />
   } else {
     if (user.role === 'admin') {
-      console.log('user role - ',user.role)
       return <Route {...props} />
     } else {
       return <Redirect to={routes.home} />
