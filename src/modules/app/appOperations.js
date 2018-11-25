@@ -5,10 +5,7 @@ export function init() {
     return async dispatch => {
         try {
             Api.initApi();
-            if (!Api.isAuthenticated()) {
-                console.log('token ',Api.isAuthenticated())
-               return
-            }
+
             const user = await Api.User.getCurrent();
 
             dispatch(actions.fetchUserOk({
