@@ -25,19 +25,11 @@ class Index extends React.Component {
     render() {
         return (
             <Provider store = {store} >
-                <PersistGate 
-                    loading = {
-                        <img 
-                            src = 'https://www.createwebsite.net/wp-content/uploads/2015/09/Loader.gif'
-                            alt = 'Loading...'
-                        />
-                    }
-                    persistor = {persistor}
-                >
+                
                     <BrowserRouter>    
                         <App />
                     </BrowserRouter>
-                </PersistGate>
+    
             </Provider>
         )
     }
@@ -49,3 +41,18 @@ ReactDOM.render(<Index />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+/*
+<PersistGate 
+                    loading = {
+                        <img 
+                            src = 'https://www.createwebsite.net/wp-content/uploads/2015/09/Loader.gif'
+                            alt = 'Loading...'
+                        />
+                    }
+                    persistor = {persistor}
+                >
+            </PersistGate>
+                
+*/
