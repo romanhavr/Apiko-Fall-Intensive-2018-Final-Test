@@ -7,8 +7,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 import * as appOperations from './modules/app/appOperations';
-import { persistor } from './store/store';
-import { PersistGate } from 'redux-persist/integration/react';
 
 store.subscribe(() => {
     const state = store.getState();
@@ -18,18 +16,16 @@ store.subscribe(() => {
 });
 
 class Index extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         store.dispatch(appOperations.init())
     }
 
     render() {
         return (
             <Provider store = {store} >
-                
-                    <BrowserRouter>    
-                        <App />
-                    </BrowserRouter>
-    
+                <BrowserRouter>    
+                    <App />
+                </BrowserRouter>
             </Provider>
         )
     }
@@ -41,18 +37,3 @@ ReactDOM.render(<Index />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-
-/*
-<PersistGate 
-                    loading = {
-                        <img 
-                            src = 'https://www.createwebsite.net/wp-content/uploads/2015/09/Loader.gif'
-                            alt = 'Loading...'
-                        />
-                    }
-                    persistor = {persistor}
-                >
-            </PersistGate>
-                
-*/
